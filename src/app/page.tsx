@@ -2,9 +2,15 @@
 
 import {Button} from "@/components/ui/button";
 import {useRouter} from "next/navigation";
+import {useEffect, useState} from "react";
 
 export default function Home() {
   const router = useRouter();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   return (
     <div className="flex flex-col items-center justify-center h-screen">
@@ -19,3 +25,4 @@ export default function Home() {
     </div>
   );
 }
+

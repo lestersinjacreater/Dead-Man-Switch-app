@@ -7,12 +7,18 @@ import {useRouter} from "next/navigation";
 import {createUserWithEmailAndPassword} from "firebase/auth";
 import {auth} from "@/lib/firebase";
 import {useToast} from "@/hooks/use-toast";
+import {useEffect} from "react";
 
 export default function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const router = useRouter();
   const {toast} = useToast();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -53,3 +59,4 @@ export default function SignUp() {
     </div>
   );
 }
+
